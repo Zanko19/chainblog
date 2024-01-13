@@ -1,0 +1,17 @@
+{
+  "name": "chainblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tailwindcss -i ./css/style.css -o ./dist/style.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1"
+  }
+}
