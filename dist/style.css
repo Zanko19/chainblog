@@ -589,12 +589,20 @@ video {
   top: 0px;
 }
 
+.-bottom-0 {
+  bottom: -0px;
+}
+
 .m-2 {
   margin: 0.5rem;
 }
 
 .m-4 {
   margin: 1rem;
+}
+
+.m-24 {
+  margin: 6rem;
 }
 
 .mb-2 {
@@ -940,6 +948,10 @@ video {
   padding: 1.5rem;
 }
 
+.p-24 {
+  padding: 6rem;
+}
+
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -958,6 +970,16 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .pb-20 {
@@ -1095,12 +1117,15 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-/* Exemple avec !important */
+.shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
 
 .dark {
   background-color: black !important;
   color: rgba(255, 255, 255, 0.825) !important;
-  /* Ajoutez d'autres styles si nécessaire */
 }
 
 .hover\:scale-110:hover {

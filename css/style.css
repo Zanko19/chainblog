@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Exemple avec !important */
+
 .dark {
     background-color: black !important;
     color: rgba(255, 255, 255, 0.825) !important;
-    /* Ajoutez d'autres styles si nécessaire */
+  
   }
   
