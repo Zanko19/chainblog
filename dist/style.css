@@ -544,6 +544,18 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .fixed {
   position: fixed;
 }
@@ -641,10 +653,6 @@ video {
   margin-top: 1.75rem;
 }
 
-.mt-20 {
-  margin-top: 5rem;
-}
-
 .block {
   display: block;
 }
@@ -659,6 +667,10 @@ video {
 
 .contents {
   display: contents;
+}
+
+.hidden {
+  display: none;
 }
 
 .h-1\/4 {
@@ -757,6 +769,10 @@ video {
   cursor: pointer;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .items-start {
   align-items: flex-start;
 }
@@ -847,6 +863,11 @@ video {
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 
+.border-green-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(34 197 94 / var(--tw-border-opacity));
+}
+
 .bg-\[\#2ECC71\] {
   --tw-bg-opacity: 1;
   background-color: rgb(46 204 113 / var(--tw-bg-opacity));
@@ -884,6 +905,18 @@ video {
 
 .fill-current {
   fill: currentColor;
+}
+
+.fill-slate-300 {
+  fill: #cbd5e1;
+}
+
+.fill-slate-400 {
+  fill: #94a3b8;
+}
+
+.fill-slate-500 {
+  fill: #64748b;
 }
 
 .object-center {
@@ -949,14 +982,6 @@ video {
 
 .pt-2 {
   padding-top: 0.5rem;
-}
-
-.pb-0 {
-  padding-bottom: 0px;
-}
-
-.pt-8 {
-  padding-top: 2rem;
 }
 
 .text-center {
@@ -1050,58 +1075,14 @@ video {
   color: rgb(67 56 202 / var(--tw-text-opacity));
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-slate-400 {
-  --tw-text-opacity: 1;
-  color: rgb(148 163 184 / var(--tw-text-opacity));
-}
-
-.text-slate-700 {
-  --tw-text-opacity: 1;
-  color: rgb(51 65 85 / var(--tw-text-opacity));
-}
-
 .text-slate-500 {
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity));
 }
 
-.text-slate-600 {
+.text-white {
   --tw-text-opacity: 1;
-  color: rgb(71 85 105 / var(--tw-text-opacity));
-}
-
-.text-slate-300 {
-  --tw-text-opacity: 1;
-  color: rgb(203 213 225 / var(--tw-text-opacity));
-}
-
-.text-slate-200 {
-  --tw-text-opacity: 1;
-  color: rgb(226 232 240 / var(--tw-text-opacity));
-}
-
-.text-slate-100 {
-  --tw-text-opacity: 1;
-  color: rgb(241 245 249 / var(--tw-text-opacity));
-}
-
-.text-blue-500 {
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
-}
-
-.text-blue-500\/50 {
-  color: rgb(59 130 246 / 0.5);
-}
-
-.text-\[\#07ed5c\] {
-  --tw-text-opacity: 1;
-  color: rgb(7 237 92 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .opacity-75 {
@@ -1112,6 +1093,14 @@ video {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+/* Exemple avec !important */
+
+.dark {
+  background-color: black !important;
+  color: white !important;
+  /* Ajoutez d'autres styles si nécessaire */
 }
 
 .hover\:scale-110:hover {
@@ -1131,32 +1120,14 @@ video {
   background-color: rgb(7 237 92 / var(--tw-bg-opacity));
 }
 
-.hover\:text-\[\#2ECC71\]:hover {
-  --tw-text-opacity: 1;
-  color: rgb(46 204 113 / var(--tw-text-opacity));
-}
-
-.hover\:text-blue-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity));
-}
-
-.hover\:text-\[blue-600\]:hover {
-  color: blue-600;
-}
-
-.hover\:text-\[\[\#07ed5c\]\]:hover {
-  color: [#07ed5c];
-}
-
 .hover\:text-\[\#07ed5c\]:hover {
   --tw-text-opacity: 1;
   color: rgb(7 237 92 / var(--tw-text-opacity));
 }
 
-.hover\:text-black:hover {
+.hover\:text-\[\#2ECC71\]:hover {
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+  color: rgb(46 204 113 / var(--tw-text-opacity));
 }
 
 .focus\:border-\[\#2ECC71\]:focus {
@@ -1169,8 +1140,11 @@ video {
   outline-offset: 2px;
 }
 
-@media (min-width: 1024px) {
-  .lg\:pt-4 {
-    padding-top: 1rem;
-  }
+:is(.dark .dark\:block) {
+  display: block;
 }
+
+:is(.dark .dark\:hidden) {
+  display: none;
+}
+  
