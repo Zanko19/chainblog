@@ -14,7 +14,12 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
         case 'messages':
             include ('messages.php');
             break;
+        case 'notifs':
+            include ('notifs.php');
+            break;
         default:
             include ('messages.php');
             break;
     } ?>
+    <!-- END CONTENT !-->
+    <?php include ('navbar.php') ?>

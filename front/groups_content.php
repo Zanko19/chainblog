@@ -1,7 +1,7 @@
     <div id="groups-content" class="tab-content">
        
     <div class="overflow-y-auto h-screen p-3 mb-9 pb-20">
-        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 p-2  bg-[#2ECC71]">
+        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 bg-[#2ECC71]">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
             <img src="./img/illustration-3d-adolescent-visage-drole-lunettes.jpg" alt="User Avatar" class="w-12 h-12 rounded-full">
           </div>
@@ -11,7 +11,7 @@
           </div>
         </div>
         
-        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 p-2  bg-[#2ECC71]">
+        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 bg-[#2ECC71]">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
             <img src="https://placehold.co/200x/ad922e/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-12 h-12 rounded-full">
           </div>
@@ -21,7 +21,7 @@
           </div>
         </div>
         
-        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 p-2  bg-[#2ECC71]">
+        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 bg-[#2ECC71]">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
             <img src="https://placehold.co/200x/2e83ad/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-12 h-12 rounded-full">
           </div>
@@ -31,7 +31,7 @@
           </div>
         </div>
         
-        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 p-2  bg-[#2ECC71]">
+        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 bg-[#2ECC71]">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
             <img src="https://placehold.co/200x/c2ebff/0f0b14.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-12 h-12 rounded-full">
           </div>
@@ -41,7 +41,7 @@
           </div>
         </div>
         
-        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 p-2  bg-[#2ECC71]">
+        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 bg-[#2ECC71]">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
             <img src="https://placehold.co/200x/e7c2ff/7315d1.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-12 h-12 rounded-full">
           </div>
@@ -51,7 +51,7 @@
           </div>
         </div>
         
-        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 p-2  bg-[#2ECC71]">
+        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 bg-[#2ECC71]">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
             <img src="https://placehold.co/200x/ffc2e2/ffdbdb.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-12 h-12 rounded-full">
           </div>
@@ -61,7 +61,7 @@
           </div>
         </div>
         
-        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 p-2  bg-[#2ECC71]">
+        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 bg-[#2ECC71]">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
             <img src="https://placehold.co/200x/f83f3f/4f4f4f.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-12 h-12 rounded-full">
           </div>
@@ -71,7 +71,7 @@
           </div>
         </div>
         
-        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 p-2  bg-[#2ECC71]">
+        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 bg-[#2ECC71]">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
             <img src="https://placehold.co/200x/dddddd/999999.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-12 h-12 rounded-full">
           </div>
@@ -81,7 +81,7 @@
           </div>
         </div>
         
-        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 p-2  bg-[#2ECC71]">
+        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 bg-[#2ECC71]">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
             <img src="https://placehold.co/200x/70ff33/501616.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-12 h-12 rounded-full">
           </div>
@@ -91,7 +91,7 @@
           </div>
         </div>
         
-        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 p-2  bg-[#2ECC71]">
+        <div class="flex items-center mb-4 cursor-pointer hover:bg-[#07ed5c] p-2 rounded-md m-2 bg-[#2ECC71]">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
             <img src="https://placehold.co/200x/30916c/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-12 h-12 rounded-full">
           </div>

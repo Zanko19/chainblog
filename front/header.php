@@ -1,6 +1,18 @@
+    <?php 
+    if ($page == 'messages') {
+        $title = 'Messages';
+    } elseif ($page == 'welcome') {
+        $title = 'Home';
+    } elseif ($page == 'notifs') { 
+        $title = 'Notifications';
+    } else {
+        $title = 'Home';
+    };
+    ?>
+
     <div class="flex items-center w-full" id="header">
       <div class="basis-1/3 flex justify-center font-semibold">
-        Chat
+        <?php echo $title; ?>
       </div>
       <div class="basis-1/3 flex justify-center">
         <img src="./img/logo.png" class="w-14 h-14" />

@@ -1,5 +1,5 @@
    <?php 
-    include ('tabs.php');
+    include ('messages_tabs.php');
     $subPage = isset($_GET['subPage']) ? $_GET['subPage'] : 'default'; 
     switch($subPage) {
         case 'personal':

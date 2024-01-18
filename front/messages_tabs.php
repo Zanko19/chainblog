@@ -7,10 +7,10 @@
 </style>
 <div class="flex items-center mr-2 ml-2 space-x-6 bg-[#b4edcc] p-2 rounded-3xl">
     <div id="personal" class="clickable-tab space-x-6 basis-1/2 flex justify-center rounded-full font-semibold <?php echo ($subPage == 'personal' || $subPage == 'default' ? 'bg-personal' : ''); ?>">
-        <a href="index.php?mainPage=messages&subPage=personal">Personal</a>
+        <a href="index.php?page=messages&subPage=personal">Personal</a>
     </div>
     <div id="groups" class="clickable-tab flex space-x-6 w-1/2 basis-1/2 justify-center rounded-full font-semibold <?php echo ($subPage == 'groups' ? 'bg-personal' : ''); ?>">
-        <a href="index.php?mainPage=messages&subPage=groups">Groups</a>
+        <a href="index.php?page=messages&subPage=groups">Groups</a>
     </div>
 </div>
     <!-- <script>
