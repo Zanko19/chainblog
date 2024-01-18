@@ -1099,7 +1099,7 @@ video {
 
 .dark {
   background-color: black !important;
-  color: white !important;
+  color: rgba(255, 255, 255, 0.825) !important;
   /* Ajoutez d'autres styles si nécessaire */
 }
 
