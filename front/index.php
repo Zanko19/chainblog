@@ -4,7 +4,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
 ?>
 
 <body class="bg-white">
-
+<div class="md:w-[85%] lg:w-[70%] md:m-auto">
     <?php include ('header.php') ?> 
     <!-- CONTENT !-->
     <?php switch($page) {
@@ -21,5 +21,6 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
             include ('messages.php');
             break;
     } ?>
+</div>
     <!-- END CONTENT !-->
     <?php include ('navbar.php') ?>
