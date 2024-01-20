@@ -14,9 +14,10 @@ try {
     $profilPic = $_POST['profilPic'];
     $bio = $_POST['bio'];
     $socials = $_POST['socials'];
+    $location = $_POST['location'];
 
-    $sql = "INSERT INTO users (USERNAME, PASSWORD, EMAIL, name, surname, alias, SecQ, SecA, Created, profilPic, bio, socials)
-            VALUES (:username, :password, :email, :name, :surname, :alias, :secQ, :secA, NOW(), :profilPic, :bio, :socials)";
+    $sql = "INSERT INTO users (USERNAME, PASSWORD, EMAIL, name, surname, alias, SecQ, SecA, Created, profilPic, bio, socials, location)
+            VALUES (:username, :password, :email, :name, :surname, :alias, :secQ, :secA, NOW(), :profilPic, :bio, :socials, :location)";
 
     $stmt = $pdo->prepare($sql);
 
@@ -31,6 +32,7 @@ try {
     $stmt->bindParam(':profilPic', $profilPic);
     $stmt->bindParam(':bio', $bio);
     $stmt->bindParam(':socials', $socials);
+    $stmt->bindParam(':location', $location);
 
     $stmt->execute();
 

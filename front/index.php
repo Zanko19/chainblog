@@ -17,8 +17,14 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
         case 'notifs':
             include ('notifs.php');
             break;
+        case 'post':
+            include ('post_form.php');
+            break;
+        case 'profile':
+            include ('profile_page.php');
+            break;
         default:
-            include ('messages.php');
+            include ('main.php');
             break;
     } ?>
 </div>

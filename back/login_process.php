@@ -20,7 +20,7 @@ try {
         // Authentification réussie
         $_SESSION['user_id'] = $user['ID'];
         $_SESSION['username'] = $user['USERNAME'];
-        header('Location: ../front/main_page.php'); // Rediriger vers la page principale
+        header('Location: ../front/index.php'); // Rediriger vers la page principale
         exit();
     } else {
         // Authentification échouée, afficher un message d'erreur
