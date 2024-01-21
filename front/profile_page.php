@@ -100,10 +100,11 @@ try {
 
 
 <div class="rounded-3xl bg-[#f4edde] m-4 focus:outline-none mb-7 p-6 shadow">
+    <div class="flex">
     <div class="flex justify-center md:justify-start">
         <img src="<?php echo $user['profilPic']; ?>" alt="coin avatar" class="w-1/4 h-1/4 rounded-full border-2 border-black mx-auto md:mx-0" />
     </div>
-    <div class="w-full pt-4">
+    <div class="w-full pt-4 text-center">
         <p class="text-xl font-medium leading-5 text-gray-800">
             <?php echo $user['name']; 
                   echo ' ';
@@ -112,6 +113,7 @@ try {
         <p class="text-sm leading-normal text-gray-500 mb-2">
             @<?php echo $user['USERNAME']; ?>
         </p>
+    </div>
     </div>
 </div>
 
