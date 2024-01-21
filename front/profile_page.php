@@ -114,6 +114,7 @@ try {
             @<?php echo $user['USERNAME']; ?>
         </p>
     </div>
+<<<<<<< HEAD
     <div class="flex border border-green-500 rounded-full font-bold px-2 justify-center">
         <div class="p-3 text-center">
             <span class="text-xl font-bold block tracking-wide text-black hover:text-[#07ed5c]"><?php echo $user['followerCount'] ?></span>
@@ -151,6 +152,9 @@ try {
                             </div>
                         </div>
                     </div>
+=======
+    </div>
+>>>>>>> c000321 (?)
 </div>
 
 <!-- Affichage des posts -->
