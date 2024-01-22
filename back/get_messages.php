@@ -20,6 +20,24 @@ $stmt->bindParam(':username', $username, PDO::PARAM_STR);
 $stmt->execute();
 $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+$groupedMessages = [];
+
+foreach ($messages as $message) {
+    // Créer une clé unique pour chaque combinaison de sender et receiver
+    $participants = [$message['sender_username'], $message['receiver_username']];
+    sort($participants); // Assurez-vous que l'ordre des participants est toujours le même
+    $key = implode('-', $participants);
+    
+    // Ajouter le message au groupe correspondant
+    if (!isset($groupedMessages[$key])) {
+        $groupedMessages[$key] = [];
+    }
+    $groupedMessages[$key][] = $message;
+}
+
+// Maintenant, $groupedMessages contient tous les messages groupés
+
+
 $pdo = null;
 
 

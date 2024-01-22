@@ -12,6 +12,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
             include ('main.php');
             break;
         case 'messages':
+            include ('message_list.php');
+            break;
+        case 'message-details':
             include ('messages.php');
             break;
         case 'messageSend':
@@ -28,6 +31,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
             break;
         case 'other':
             include ('other_page.php');
+            break;
+        case 'profileModify':
+            include ('profile_form.php');
             break;
         default:
             include ('main.php');

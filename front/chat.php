@@ -1,4 +1,36 @@
-<?php include '../back/get_chat.php' ?>
+<?php include '../back/get_chat.php';
+
+// Vérifier si l'utilisateur est connecté (vous pouvez ajuster cela en fonction de votre système d'authentification)
+if (!isset($_SESSION['user_id'])) {
+    echo "Vous devez être connecté pour accéder à vos messages.";
+    exit;
+}
+
+// Récupérer la valeur du paramètre 'group' depuis l'URL
+if (isset($_GET['group'])) {
+    $groupParam = $_GET['group'];
+    
+    // Séparer les noms d'utilisateur en utilisant le tiret comme délimiteur
+    $usernames = explode('-', $groupParam);
+    
+    // Vérifier s'il y a au moins deux noms d'utilisateur
+    if (count($usernames) == 2) {
+        // Le premier nom d'utilisateur est le sender (expéditeur)
+        $senderUsername = $usernames[0];
+        
+        // Le deuxième nom d'utilisateur est le receiver (destinataire)
+        $receiverUsername = $usernames[1];
+        
+        // Vous avez maintenant les deux noms d'utilisateur, que vous pouvez utiliser dans votre code
+    } else {
+        echo "URL invalide : le paramètre 'group' doit contenir deux noms d'utilisateur séparés par un tiret.";
+    }
+} else {
+    echo "Le paramètre 'group' n'a pas été spécifié dans l'URL.";
+    exit;
+}
+?>
+
 <!-- Chat Messages -->
 <div class="h-screen overflow-y-auto p-4 pb-36">
     <?php foreach ($messages as $message) : ?>

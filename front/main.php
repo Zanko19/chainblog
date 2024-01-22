@@ -70,11 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!isLiked) {
                 addLike(postID, this);
-                // Changer la couleur du SVG en vert après avoir liké
                 this.querySelector('svg').classList.add('text-[#2ECC71]');
             } else {
                 removeLike(postID, this);
-                // Retirer la couleur verte du SVG après avoir unliké
                 this.querySelector('svg').classList.remove('text-[#2ECC71]');
             }
         });

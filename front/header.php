@@ -1,4 +1,11 @@
     <?php
+
+  session_start();
+
+  if (!isset($_SESSION['user_id'])) {
+    header('Location: login_form.php'); // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
+    exit();
+  }
     switch($page) {
       case 'welcome':
         $title = 'Home';
@@ -18,17 +25,15 @@
       case 'other':
         $title = 'Profile';
         break;
+      case 'profileModify':
+        $title = 'Modify profile';
+        break;
       default:
         $title = 'Home';
         break;
     } 
 
-    session_start();
 
-    if (!isset($_SESSION['user_id'])) {
-      header('Location: login_form.php'); // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
-      exit();
-    }
     ?>
     <div class="flex items-center w-full" id="header">
       <div class="basis-1/3 flex justify-center font-semibold">
