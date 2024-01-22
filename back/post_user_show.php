@@ -18,6 +18,24 @@ try {
     echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
 }
 
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Récupérez l'ID de l'utilisateur connecté depuis la session
+    $userId = $_SESSION['user_id'];
+
+    // Requête pour récupérer les informations de l'utilisateur connecté
+    $sql = "SELECT * FROM users WHERE ID = :userId";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    echo 'Erreur de connexion à la base de données : ' . $e->getMessage();
+}
+
 $sqlLikes = "SELECT post_id, COUNT(*) AS likeCount FROM post_likes GROUP BY post_id";
 $stmtLikes = $pdo->query($sqlLikes);
 $likesData = $stmtLikes->fetchAll(PDO::FETCH_ASSOC);
@@ -37,3 +55,5 @@ $commentsByPost = [];
 foreach ($commentsData as $comment) {
     $commentsByPost[$comment['post_id']] = $comment['commentCount'];
 }
+
+

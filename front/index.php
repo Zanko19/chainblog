@@ -14,6 +14,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
         case 'messages':
             include ('messages.php');
             break;
+        case 'messageSend':
+            include ('message_form.php');
+            break;
         case 'notifs':
             include ('notifs.php');
             break;
@@ -23,6 +26,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
         case 'profile':
             include ('profile_page.php');
             break;
+        case 'other':
+            include ('other_page.php');
+            break;
         default:
             include ('main.php');
             break;
@@ -30,3 +36,4 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
 </div>
     <!-- END CONTENT !-->
     <?php include ('navbar.php') ?>
+    <?php include ('searchbar.php') ?>

@@ -15,6 +15,9 @@
       case 'profile':
         $title = 'Profile';
         break;
+      case 'other':
+        $title = 'Profile';
+        break;
       default:
         $title = 'Home';
         break;
