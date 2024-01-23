@@ -9,21 +9,19 @@ if (!isset($groupedMessages[$groupKey])) {
 
 $messages = $groupedMessages[$groupKey];
 
-$participants = explode('-', $groupKey); // Divisez la clé en un tableau de participants
+$participants = explode('-', $groupKey);
 $sender = $participants[0];
 $receiver = $participants[1];
 
 if ($_SESSION['username'] === $sender) {
-    // L'utilisateur actuel est le sender, affichez le receiver
     $otherUser = $receiver;
 } else {
-    // L'utilisateur actuel est le receiver, affichez le sender
     $otherUser = $sender;
 }
 ?>
 
 <div class="conversation-details">
-<h1 class="group-title text-center font-bold"><?php echo '@' . $otherUser; ?></h1>
+<h1 class="group-title text-xl font-semibold text-center"><?php echo '@' . $otherUser; ?></h1>
     <?php foreach (array_reverse($messages) as $message): ?>
     <?php
 
@@ -38,7 +36,6 @@ if ($_SESSION['username'] === $sender) {
         $avatarPlaceholder = 'https://placehold.co/200x/ffa8e4/ffffff.svg?text=' . substr($senderUsername, 0, 1) . '&font=Lato';
         $messageBackgroundColor = $isCurrentUser ? 'bg-[#2ECC71] text-white' : 'bg-[#f4edde]';
         $avatarImage = $isCurrentUser ? 'https://placehold.co/200x/b7a8ff/ffffff.svg?text=ME&font=Lato' : $avatarPlaceholder;
-        
     ?>
     <div class="flex mb-4 <?php echo $isCurrentUser ? 'justify-end' : ''; ?> cursor-pointer">
         <?php if (!$isCurrentUser): ?>
@@ -57,6 +54,14 @@ if ($_SESSION['username'] === $sender) {
     </div>
     <?php endforeach; ?>
 </div>
+<?php
+
+$currentUser = $_SESSION['username'];
+$isCurrentUserSender = ($currentUser === $sender);
+
+$responseReceiver = $isCurrentUserSender ? $receiver : $sender;
+
+?>
 
 
 
@@ -66,8 +71,8 @@ if ($_SESSION['username'] === $sender) {
             <label for="message" class="block text-gray-600">Message :</label>
             <textarea id="message" name="message" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-400" placeholder="Tapez votre message ici" rows="4" required></textarea>
         </div>
-        <input type="hidden" id="receiver" name="receiver" value="<?php echo $receiverUsername; ?>"/>
-        <input type="hidden" id="sender" name="sender" value="<?php echo $_SESSION['username']; ?>"/>
+        <input type="hidden" id="receiver" name="receiver" value="<?php echo htmlspecialchars($responseReceiver); ?>"/>
+        <input type="hidden" id="sender" name="sender" value="<?php echo htmlspecialchars($currentUser); ?>"/>
         
         <div class="flex justify-end">
             <button type="submit" class="bg-green-600 text-white font-semibold px-4 py-2 rounded-md hover:bg-green-700 focus:outline-none focus:bg-green-700">Envoyer</button>

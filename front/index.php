@@ -35,6 +35,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
         case 'profileModify':
             include ('profile_form.php');
             break;
+        case 'search_results': 
+            include ('search_results.php');
+            break;
         default:
             include ('main.php');
             break;

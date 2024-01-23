@@ -13,6 +13,9 @@
       case 'messages':
         $title = 'Messages';
         break;
+      case 'message-details':
+        $title = 'Message';
+        break;
       case 'notifs': 
         $title = 'Notifications';
         break;
@@ -36,7 +39,8 @@
 
     ?>
     <div class="flex items-center w-full" id="header">
-      <div class="basis-1/3 flex justify-center font-semibold">
+      <div class="basis-1/3 flex justify-center font-semibold gap-x-10">
+        <button onclick="history.back()"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg></button>
         <?php echo $title; ?>
       </div>
       <div class="basis-1/3 flex justify-center">
