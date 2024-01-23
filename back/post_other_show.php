@@ -1,8 +1,6 @@
 <?php
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+    include 'db_connect.php';
     // Récupérer l'ID de l'utilisateur à partir de l'URL
     if (isset($_GET['id'])) {
         $userId = $_GET['id'];

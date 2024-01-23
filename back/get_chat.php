@@ -9,8 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 
 try {
     // Établir la connexion à la base de données (ajustez les paramètres de connexion)
-    $pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    include 'db_connect.php';
 
     // Récupérer l'ID de l'utilisateur connecté à partir de la session
     $userId = $_SESSION['user_id'];

@@ -2,7 +2,7 @@
 
 session_start();
 
-$pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
+include 'db_connect.php';
 
 // Vérifier si l'utilisateur est connecté et si l'ID de l'utilisateur à suivre est fourni
 if (isset($_SESSION['user_id']) && isset($_POST['follow_user_id'])) {

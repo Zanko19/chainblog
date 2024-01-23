@@ -2,8 +2,7 @@
 header('Content-Type: application/json');
 session_start();
 
-$pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include 'db_connect.php';
 
 if (!isset($_GET['postID']) || empty($_GET['postID'])) {
     echo json_encode(['status' => 'error', 'message' => 'postID is required']);

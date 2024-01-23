@@ -1,7 +1,6 @@
 <?php
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    include 'db_connect.php';
 
     // Récupérez les posts depuis la base de données, triés du plus récent au plus ancien, pour l'utilisateur connecté
     $userId = $_SESSION['user_id'];
@@ -19,8 +18,7 @@ try {
 }
 
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    include 'db_connect.php';
 
     // Récupérez l'ID de l'utilisateur connecté depuis la session
     $userId = $_SESSION['user_id'];

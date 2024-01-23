@@ -19,8 +19,7 @@ if (empty($receiverUsername) || empty($messageText)) {
 }
 
 // Établir la connexion à la base de données (ajustez les paramètres de connexion)
-$pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include 'db_connect.php';
 
 // Rechercher l'ID du destinataire en fonction de son nom d'utilisateur
 $stmt = $pdo->prepare("SELECT ID FROM users WHERE username = ?");

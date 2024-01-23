@@ -20,8 +20,7 @@ if (!isset($_SESSION['user_id'])) {
 // }
 
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    include 'db_connect.php';
 
     // $slug = slugify($_POST['body']);
     $body = $_POST['body'];

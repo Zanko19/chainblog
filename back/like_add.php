@@ -2,8 +2,7 @@
 header('Content-Type: application/json');
 session_start();
 
-$pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include 'db_connect.php';
 
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, TRUE); // Convert JSON into array

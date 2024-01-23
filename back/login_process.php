@@ -2,8 +2,7 @@
 session_start();
 
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    include 'db_connect.php';
 
     $username = $_POST['username'];
     $password = $_POST['password'];

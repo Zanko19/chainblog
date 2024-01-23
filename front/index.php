@@ -7,6 +7,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
 <div class="md:w-[85%] lg:w-[70%] md:m-auto">
     <?php include ('header.php') ?> 
     <!-- CONTENT !-->
+    <div class="pt-[6%] ">
     <?php switch($page) {
         case 'welcome':
             include ('main.php');
@@ -38,10 +39,14 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
         case 'search_results': 
             include ('search_results.php');
             break;
+        case 'singlePost':
+            include ('single_post.php');
+            break;
         default:
             include ('main.php');
             break;
     } ?>
+    </div>
 </div>
     <!-- END CONTENT !-->
     <?php include ('navbar.php') ?>

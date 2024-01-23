@@ -6,8 +6,8 @@
                 <label for="message" class="block text-gray-600">Message :</label>
                 <textarea id="message" name="message" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-400" placeholder="Tapez votre message ici" rows="6" required></textarea>
             </div>
-            <input type="text" id="receiver" class="" value="<?php echo $user['USERNAME']; ?>"/>
-            <input type="text" id="sender" class="" value="<?php echo $_SESSION['username']; ?>"/>
+            <input type="text" id="receiver" class="hidden" value="<?php echo $user['USERNAME']; ?>"/>
+            <input type="text" id="sender" class="hidden" value="<?php echo $_SESSION['username']; ?>"/>
         
 
             <div class="flex justify-end">

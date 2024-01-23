@@ -1,6 +1,5 @@
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include 'db_connect.php';
 
 $postID = $_POST['postID'];
 $userID = $_SESSION['userID']; // Assurez-vous que l'ID de l'utilisateur est stocké dans la session

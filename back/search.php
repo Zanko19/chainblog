@@ -4,8 +4,7 @@ session_start();
 $currentUser = $_SESSION['username'];
 $searchQuery = '%' . $_GET['search_query'] . '%';
 
-$pdo = new PDO('mysql:host=localhost;dbname=blogchain', 'root', '');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include 'db_connect.php';
 
 // utilisateurs
 $stmt = $pdo->prepare("SELECT * FROM users WHERE USERNAME LIKE ?");

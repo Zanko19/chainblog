@@ -20,7 +20,7 @@ if ($_SESSION['username'] === $sender) {
 }
 ?>
 
-<div class="conversation-details">
+<div class="conversation-details p-10">
 <h1 class="group-title text-xl font-semibold text-center"><?php echo '@' . $otherUser; ?></h1>
     <?php foreach (array_reverse($messages) as $message): ?>
     <?php
@@ -37,7 +37,7 @@ if ($_SESSION['username'] === $sender) {
         $messageBackgroundColor = $isCurrentUser ? 'bg-[#2ECC71] text-white' : 'bg-[#f4edde]';
         $avatarImage = $isCurrentUser ? 'https://placehold.co/200x/b7a8ff/ffffff.svg?text=ME&font=Lato' : $avatarPlaceholder;
     ?>
-    <div class="flex mb-4 <?php echo $isCurrentUser ? 'justify-end' : ''; ?> cursor-pointer">
+    <div class="flex mb-4 <?php echo $isCurrentUser ? 'justify-end' : ''; ?>">
         <?php if (!$isCurrentUser): ?>
         <div class="w-9 h-9 rounded-full flex items-center justify-center mr-2">
             <img src="<?php echo $avatarImage; ?>" alt="User Avatar" class="w-8 h-8 rounded-full">
@@ -65,7 +65,7 @@ $responseReceiver = $isCurrentUserSender ? $receiver : $sender;
 
 
 
-<div class="send-message-container">
+<div class="send-message-container p-10">
     <form id="sendMessageForm" action="../back/message_chat.php" method="post">
         <div class="mb-4">
             <label for="message" class="block text-gray-600">Message :</label>
