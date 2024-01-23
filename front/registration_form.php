@@ -1,4 +1,5 @@
-<?php include "start.php"; ?>  
+<script src="https://cdn.tailwindcss.com"></script>
+ 
 <div class="max-w-md mx-auto my-12 bg-white p-6 rounded-md shadow-md">
         <h1 class="text-2xl font-semibold mb-6">Inscription</h1>
         <form action="../back/registration_process.php" method="POST">

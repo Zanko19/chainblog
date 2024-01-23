@@ -1,10 +1,8 @@
 <?php 
-include ('start.php');
 $page = isset($_GET['page']) ? $_GET['page'] : 'default';  
 ?>
 
-<body class="bg-white">
-<div class="md:w-[85%] lg:w-[70%] md:m-auto">
+
     <?php include ('header.php') ?> 
     <!-- CONTENT !-->
     <div class="pt-[6%] ">
@@ -41,6 +39,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
             break;
         case 'singlePost':
             include ('single_post.php');
+            break;
+        case 'login':
+            include ('login_form.php');
             break;
         default:
             include ('main.php');

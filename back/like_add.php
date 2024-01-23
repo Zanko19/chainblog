@@ -19,6 +19,7 @@ if (!isset($input['postID']) || empty($input['postID'])) {
 
 $postID = $input['postID'];
 $userID = $_SESSION['user_id']; 
+$username = $_SESSION['username']; // Assurez-vous que le nom d'utilisateur est stocké dans la session
 
 if (!isset($userID) || empty($userID)) {
     echo json_encode(['status' => 'error', 'message' => 'User not authenticated']);
@@ -36,7 +37,7 @@ try {
         exit;
     }
 
-    // Commencez une transaction pour vous assurer que les deux requêtes sont exécutées correctement
+    // Commencez une transaction pour vous assurer que toutes les requêtes sont exécutées correctement
     $pdo->beginTransaction();
 
     // Première requête : Insertion dans post_likes
@@ -48,6 +49,12 @@ try {
     $stmt = $pdo->prepare("UPDATE post SET likes = likes + 1 WHERE ID = ?");
     $stmt->execute([$postID]);
 
+    // Troisième requête : Insertion dans la table notifications
+    $actionType = 'post_like';
+    $sqlNotification = "INSERT INTO notifications (user_id, action_type, action_username, created_at) VALUES (?, ?, ?, NOW())";
+    $stmtNotification = $pdo->prepare($sqlNotification);
+    $stmtNotification->execute([$userID, $actionType, $username]);
+
     // Si tout va bien, validez la transaction
     $pdo->commit();
 
@@ -57,3 +64,4 @@ try {
     $pdo->rollBack();
     echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
 }
+?>

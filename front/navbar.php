@@ -67,6 +67,7 @@
             <span class="hidden lg:inline-block">Logout</span>
         </a>
         <!-- ajouter un SVG  poster -->
-        <a href="index.php?page=post" class="bg-green-950 rounded-lg w-[50%] hidden md:flex justify-center font-bold text-white">Post</a>
+        <a href="index.php?page=post" class="hover:scale-150 lg:flex lg:items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="hidden md:inline-block" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h360v80H200v560h560v-360h80v360q0 33-23.5 56.5T760-120H200Zm120-160v-80h320v80H320Zm0-120v-80h320v80H320Zm0-120v-80h320v80H320Zm360-80v-80h-80v-80h80v-80h80v80h80v80h-80v80h-80Z"/></svg>
+        <span class="hidden lg:inline-block">Post</a>
     </div>
-</div>
