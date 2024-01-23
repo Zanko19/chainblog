@@ -67,6 +67,6 @@
             <span class="hidden lg:inline-block">Logout</span>
         </a>
         <!-- ajouter un SVG  poster -->
-        <a href="index.php?page=post" class="bg-green-950 rounded-lg w-[50%] hidden md:flex justify-center font-bold text-white">Post</a>
+        <a href="index.php?page=post" class="bg-green-950 rounded-lg w-[50%] hidden lg:flex justify-center font-bold text-white">Post</a>
     </div>
 </div>
