@@ -1,5 +1,5 @@
 <h1 class="text-3xl font-semibold mb-4">Vos Notifications</h1>
-<div id="notificationArea" class="space-y-4"></div>
+<div id="notificationArea" class="space-y-4 pt-[10%]"></div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

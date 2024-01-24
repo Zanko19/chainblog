@@ -1,5 +1,6 @@
 <?php
-include '../back/get_posts_data.php';
+
+require_once('../back/get_posts_data.php');
 // L'URL de votre API (modifiez cette URL par l'URL de votre API)
 $api_url = '../back/get_posts_data.php';
 
@@ -7,13 +8,19 @@ $api_url = '../back/get_posts_data.php';
 $json_data = file_get_contents($api_url);
 $response_data = json_decode($json_data, true);
 
-// Récupérer 'data' depuis le JSON
-$posts = $response_data['data'];
+// Vérifier si la réponse est valide avant de l'afficher
+if ($response_data && isset($response_data['data'])) {
+    $posts = $response_data['data'];
+} else {
+    // Gérer les erreurs si la réponse JSON n'est pas valide
+    $posts = []; // Initialisez $posts avec un tableau vide ou gérez les erreurs autrement
+}
 
+var_dump($posts);
 ?>
 
-<body>
-    <h1>Top 5 Posts</h1>
+<div>
+<h1>Top 5 Posts</h1>
     <ul>
         <?php foreach ($posts as $post): ?>
             <li>
@@ -24,4 +31,4 @@ $posts = $response_data['data'];
             </li>
         <?php endforeach; ?>
     </ul>
-</body>
+</div>

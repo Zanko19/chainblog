@@ -5,7 +5,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
 
     <?php include ('header.php') ?> 
     <!-- CONTENT !-->
-    <div class="pt-[6%] ">
+    <div class="sm:pt-[10%] pt-[6%] overflow-auto">
     <?php switch($page) {
         case 'welcome':
             include ('main.php');
@@ -33,6 +33,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
             break;
         case 'profileModify':
             include ('profile_form.php');
+            break;
+        case 'search':
+            include ('search_form.php');
             break;
         case 'search_results': 
             include ('search_results.php');
