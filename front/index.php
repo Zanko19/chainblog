@@ -5,7 +5,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
 
     <?php include ('header.php') ?> 
     <!-- CONTENT !-->
-    <div class="sm:pt-[10%] pt-[6%] overflow-auto">
+    <br class="mt-12">
+    <div class="">
+
     <?php switch($page) {
         case 'welcome':
             include ('main.php');
@@ -55,3 +57,11 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'default';
     <!-- END CONTENT !-->
     <?php include ('navbar.php') ?>
     <?php include ('searchbar.php') ?>
+
+    <?php
+
+    if (isset($_SESSION['login_success']) && $_SESSION['login_success']) {
+        echo '<script>alert("Connexion réussie ! Bienvenue, ' . htmlspecialchars($_SESSION['username']) . '");</script>';
+        unset($_SESSION['login_success']);
+    }
+    ?>

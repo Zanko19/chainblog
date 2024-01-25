@@ -1,42 +1,147 @@
+
 document.addEventListener("DOMContentLoaded", function () {
-    const likeButton = document.getElementById("likeButton");
-    const likeCount = document.getElementById("likeCount");
-    const postId = likeButton.getAttribute("data-post-id");
-    let isLiked = false;
+    const likeButtons = document.querySelectorAll(".likeButton");
+    likeButtons.forEach(likeButton => {
+        likeButton.addEventListener('click', function() {
+            const postID = likeButton.getAttribute("data-post-id");
+            const isLiked = likeButton.getAttribute("data-is-liked") === "true";
+            const receiverUserID = likeButton.getAttribute("data-receiver-id");
 
-    // Vérifiez si l'utilisateur a déjà liké ce post (vous devrez implémenter cette fonction côté serveur)
-    // Si le post a déjà été liké par l'utilisateur, définissez isLiked sur true ici.
+            if (isLiked) {
+                removeLike(postID, likeButton);
+            } else {
+                addLike(postID, likeButton, receiverUserID);
+            }
+        });
 
-    // Fonction pour gérer le clic sur le bouton de like/délike
-    likeButton.addEventListener("click", function () {
-        if (!isLiked) {
-            // Si l'utilisateur n'a pas encore liké ce post, effectuez l'action de like
-            // Vous devrez envoyer une requête au serveur pour ajouter le like à la base de données
-            // Mettez à jour l'interface utilisateur pour refléter le nouveau nombre de likes
-            isLiked = true;
-            likeCount.textContent = parseInt(likeCount.textContent) + 1;
-            // Vous devrez envoyer une requête au serveur pour ajouter le like
-        } else {
-            // Si l'utilisateur a déjà liké ce post, effectuez l'action de délike
-            // Vous devrez envoyer une requête au serveur pour supprimer le like de la base de données
-            // Mettez à jour l'interface utilisateur pour refléter le nouveau nombre de likes
-            isLiked = false;
-            likeCount.textContent = parseInt(likeCount.textContent) - 1;
-            // Vous devrez envoyer une requête au serveur pour supprimer le like
-        }
+        const postID = likeButton.getAttribute("data-post-id");
+        updateLikeCount(postID);
     });
 
-    // Fonction pour mettre à jour le nombre de likes depuis le serveur
-    function updateLikeCount(postID) {
-        // Effectuez une requête AJAX pour obtenir le nombre de likes du serveur
-        // Utilisez postID pour identifier le post spécifique
-        // Mettez à jour l'élément HTML avec le nouveau nombre de likes
-        // Vous pouvez utiliser la bibliothèque JavaScript de votre choix, comme Axios ou Fetch, pour effectuer la requête AJAX.
+function addLike(postID, button, receiverUserID) {
+    fetch('../back/like_add.php', {
+        method: 'POST',
+        body: JSON.stringify({ postID: postID, receiverUserID: receiverUserID }),
+        headers: { 'Content-type': 'application/json; charset=UTF-8' }
+    })
+    .then(response => response.json())
+    .then(json => {
+        if (json.status === 'success') {
+            button.setAttribute("data-is-liked", "true");
+            updateLikeCount(postID);
+        }
+        console.log('addLike response:', json);
+    })
+    .catch(error => console.error('Error in addLike:', error));
+}
+
+    function removeLike(postID, button) {
+        fetch('../back/like_delete.php', {
+            method: 'POST',
+            body: JSON.stringify({ postID: postID }),
+            headers: { 'Content-type': 'application/json; charset=UTF-8' }
+        })
+        .then(response => response.json())
+        .then(json => {
+            if (json.status === 'success') {
+                button.setAttribute("data-is-liked", "false");
+                updateLikeCount(postID);
+            }
+            console.log('removeLike response:', json);
+        })
+        .catch(error => console.error('Error in removeLike:', error));
     }
 
-    // Actualisez le compteur de likes toutes les X secondes
-    const postID = <?php echo $post['ID']; ?>; // Obtenez l'ID du post actuel depuis PHP
-    setInterval(function () {
-        updateLikeCount(postID);
-    }, 5000); // Actualisez toutes les 5 secondes (ajustez cet intervalle selon vos besoins)
+    function updateLikeCount(postID) {
+        fetch('../back/get_like_count.php?postID=' + postID)
+        .then(response => response.json())
+        .then(data => {
+            console.log('Updating like count for postID:', postID, 'New count:', data.likeCount);
+            document.getElementById('likeCount-' + postID).textContent = data.likeCount;
+        })
+        .catch(error => console.error('Error in updateLikeCount:', error));
+    }
+});
+
+$(document).ready(function() {
+    $(".commentButton").click(function() {
+        var postID = $(this).data("post-id");
+        var userID = $(this).data("user-id");  // Récupérer l'ID de l'utilisateur
+        $("#commentModal").removeClass("hidden");
+        $("#addCommentBtn").data("post-id", postID);
+        $("#addCommentBtn").data("user-id", userID);  
+
+        $.ajax({
+            type: "GET",
+            url: "../back/comment_get.php", 
+            dataType: "json",
+            data: {
+                postID: postID
+            },
+            success: function(response) {
+                if (response.status === "success") {
+                    var comments = response.comments;
+                    var commentsHtml = '';
+
+                    for (var i = 0; i < comments.length; i++) {
+                        var comment = comments[i];
+                        commentsHtml += '<div class="border-t border-gray-200 py-2">';
+                        commentsHtml += '<div class="font-semibold">' + comment.author + '</div>'; // Afficher le nom de l'auteur en gras
+                        commentsHtml += '<div class="text-gray-500 text-xs">' + comment.date + '</div>'; // Afficher la date du commentaire en gris et plus petite
+                        commentsHtml += '<div>' + comment.comment_body + '</div>'; // Afficher le corps du commentaire
+                        commentsHtml += '</div>';
+                    }
+
+                    $("#commentsSection").html(commentsHtml);
+                } else {
+                    alert("Erreur lors de la récupération des commentaires : " + response.message);
+                }
+            },
+            error: function() {
+                alert("Une erreur s'est produite lors de la demande.");
+            }
+        });
+    });
+
+    $("#closeModalBtn").click(function() {
+        $("#commentModal").addClass("hidden");
+    });
+
+    $("#addCommentBtn").click(function() {
+    var commentBody = $("#commentInput").val();
+    var postID = $(this).data("post-id");
+    var receiverUserID = $(this).data("receiver-id"); 
+
+    if (commentBody.trim() === "") {
+        alert("Le commentaire ne peut pas être vide.");
+        return;
+    }
+
+    var commentData = {
+        postID: postID,
+        commentBody: commentBody,
+        receiverUserID: receiverUserID 
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "../back/comment_add.php",
+        dataType: "json",
+        data: JSON.stringify(commentData),
+        contentType: "application/json; charset=utf-8",
+        success: function(response) {
+            if (response.status === "success") {
+                alert("Commentaire ajouté avec succès.");
+                $("#commentInput").val("");
+                $("#commentModal").addClass("hidden");
+            } else {
+                alert("Erreur lors de l'ajout du commentaire : " + response.message);
+            }
+        },
+        error: function() {
+            alert("Erreur lors de l'ajout du commentaire.");
+        }
+    });
+});
+
 });

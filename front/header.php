@@ -3,7 +3,7 @@
     session_start();
 
     if (!isset($_SESSION['user_id'])) {
-      header('Location: login_form.php'); // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
+      header('Location: login_form.php');
       exit();
     }
     switch ($page) {
@@ -29,7 +29,7 @@
         $title = 'Profile';
         break;
       case 'profileModify':
-        $title = 'Modify profile';
+        $title = 'Settings';
         break;
       case 'singlePost':
         $title = 'Post';
@@ -55,10 +55,10 @@
 
    </head>
 
-   <body class="bg-white overflow-auto">
+   <body class="bg-white overflow-hidden">
      <div class="md:w-[85%] lg:w-[70%] md:pl-[7%] lg:pl-0 lg:m-auto">
 
-       <div class="flex items-center w-full justify-center fixed bg-white" id="header">
+       <div class="flex items-center w-full justify-center fixed" id="header">
          <div class="basis-1/3 flex justify-center font-semibold md:pl-6 lg:justify-start lg:ml-4 md:justify-start md:ml-4">
            <button onclick="history.back()"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
@@ -66,9 +66,9 @@
            <?php echo $title; ?>
          </div>
          <div class="basis-1/3 flex justify-center lg:justify-start md:justify-start">
-           <img src="./img/logo.png" class="w-14 h-14" />
+           <a href="index.php"><img src="./img/logo.png" class="w-14 h-14" /></a>
          </div>
-         <div class="basis-1/3 flex justify-end mr-2">
+         <div class="basis-1/3 flex justify-center mr-2">
            <button id="menuButton">
              <span class="md:hidden">
                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
@@ -76,7 +76,7 @@
                </svg>
              </span>
            </button>
-           <div id="dropdownMenu" class="hidden flex flex-col bg-white shadow-md rounded mt-2 absolute top-8">
+           <div id="dropdownMenu" class="hidden flex flex-col bg-slate-200 shadow-md rounded mt-2 absolute top-10 ">
              <a href="index.php?page=profile" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
              <a href="index.php?page=profileModify" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
              <a href="../back/logout.php" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>

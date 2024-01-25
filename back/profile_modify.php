@@ -1,55 +1,42 @@
 <?php
-header('Content-Type: application/json');
-session_start();
-
-include 'db_connect.php';
-
-$userID = $_SESSION['user_id'];
-
-$inputJSON = file_get_contents('php://input');
-
-if ($inputJSON === false) {
-    echo json_encode(['status' => 'error', 'message' => 'Error reading input data']);
-    exit;
-}
-
-$input = json_decode($inputJSON, TRUE);
-
 try {
-    // Requête pour mettre à jour les données de l'utilisateur
-    $stmt = $pdo->prepare("UPDATE users SET
-                USERNAME = :USERNAME,
-                PASSWORD = :PASSWORD,
-                EMAIL = :EMAIL,
-                name = :name,
-                surname = :surname,
-                alias = :alias,
-                SecQ = :SecQ,
-                SecA = :SecA,
-                profilPic = :profilPic,
-                bio = :bio,
-                socials = :socials,
-                location = :location
-            WHERE ID = :userID");
+    include 'db_connect.php';
 
-    // Liaison des paramètres
-    $stmt->bindParam(':USERNAME', $input['USERNAME']);
-    $stmt->bindParam(':PASSWORD', $input['PASSWORD']); // Vous devrez peut-être hasher le mot de passe
-    $stmt->bindParam(':EMAIL', $input['EMAIL']);
-    $stmt->bindParam(':name', $input['name']);
-    $stmt->bindParam(':surname', $input['surname']);
-    $stmt->bindParam(':alias', $input['alias']);
-    $stmt->bindParam(':SecQ', $input['SecQ']);
-    $stmt->bindParam(':SecA', $input['SecA']);
-    $stmt->bindParam(':profilPic', $input['profilPic']);
-    $stmt->bindParam(':bio', $input['bio']);
-    $stmt->bindParam(':socials', $input['socials']);
-    $stmt->bindParam(':location', $input['location']);
-    $stmt->bindParam(':userID', $userID);
+    $username = $_POST['username'];
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $email = $_POST['email'];
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $alias = $_POST['alias'];
+    $secQ = $_POST['secQ'];
+    $secA = $_POST['secA'];
+    $profilPic = $_POST['profilPic'];
+    $bio = $_POST['bio'];
+    $socials = $_POST['socials'];
+    $location = $_POST['location'];
+
+    $sql = "INSERT INTO users (USERNAME, PASSWORD, EMAIL, name, surname, alias, SecQ, SecA, Created, profilPic, bio, socials, location)
+            VALUES (:username, :password, :email, :name, :surname, :alias, :secQ, :secA, NOW(), :profilPic, :bio, :socials, :location)";
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':surname', $surname);
+    $stmt->bindParam(':alias', $alias);
+    $stmt->bindParam(':secQ', $secQ);
+    $stmt->bindParam(':secA', $secA);
+    $stmt->bindParam(':profilPic', $profilPic);
+    $stmt->bindParam(':bio', $bio);
+    $stmt->bindParam(':socials', $socials);
+    $stmt->bindParam(':location', $location);
 
     $stmt->execute();
 
-    echo json_encode(['status' => 'success']);
+    header('Location: ../front/index.php');
+    exit();
 } catch (PDOException $e) {
-    echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+    echo 'Erreur lors de l\'inscription : ' . $e->getMessage();
 }

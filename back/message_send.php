@@ -8,8 +8,8 @@ if (!isset($_SESSION['user_id'])) {
 
 $receiverUsername = $_POST['receiver']; 
 $messageBody = $_POST['message']; 
-$senderUserID = $_SESSION['user_id']; // Assurez-vous que l'ID de l'utilisateur est stocké dans la session
-$senderUsername = $_SESSION['username']; // Assurez-vous que le nom d'utilisateur est stocké dans la session
+$senderUserID = $_SESSION['user_id']; 
+$senderUsername = $_SESSION['username']; 
 
 if (empty($receiverUsername) || empty($messageBody)) {
     echo json_encode(['status' => 'error', 'message' => 'Veuillez remplir tous les champs.']);
@@ -36,7 +36,6 @@ try {
     $stmt = $pdo->prepare("INSERT INTO messages (sender_username, receiver_username, message_text, sent_at) VALUES (?, ?, ?, NOW())");
     $stmt->execute([$senderUsername, $receiverUsername, $messageBody]);
 
-    // Insertion d'une notification pour informer le destinataire du nouveau message
     $actionType = 'new_message';
     $sqlNotification = "INSERT INTO notifications (user_id, action_type, action_username, created_at) VALUES (?, ?, ?, NOW())";
     $stmtNotification = $pdo->prepare($sqlNotification);
