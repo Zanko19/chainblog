@@ -16,12 +16,12 @@ Un clone de Twitter développé avec PHP, MySQL et jQuery pour l'interactivité.
 
 1. **Cloner le dépôt** :
     ```sh
-    git clone https://github.com/votre-nom-utilisateur/clone-twitter.git
+    git clone https://github.com/Eneuem/chainblog.git
     ```
 
 2. **Naviguer dans le répertoire du projet** :
     ```sh
-    cd clone-twitter
+    cd chainblog
     ```
 
 3. **Configurer la base de données** :
