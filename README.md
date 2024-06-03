@@ -1,4 +1,4 @@
-# Clone de Twitter
+# Clone de reseau social
 
 Un clone de Twitter développé avec PHP, MySQL et jQuery pour l'interactivité. Cette application permet aux utilisateurs de publier des messages, de suivre des contacts, de liker et commenter des posts, et de charger une photo de profil.
 
@@ -82,10 +82,6 @@ Un clone de Twitter développé avec PHP, MySQL et jQuery pour l'interactivité.
 ## Contribution
 
 N'hésitez pas à forker ce dépôt et à soumettre des pull requests. Pour les changements majeurs, veuillez ouvrir une issue d'abord pour discuter de ce que vous souhaitez modifier.
-
-## Licence
-
-Ce projet est open-source et disponible sous la [licence MIT](LICENSE).
 
 ## Contact
 
