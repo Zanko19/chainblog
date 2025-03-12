@@ -19,11 +19,13 @@ try {
         // Authentification réussie
         $_SESSION['user_id'] = $user['ID'];
         $_SESSION['username'] = $user['USERNAME'];
+        $_SESSION['login_success'] = true;
         header('Location: ../front/index.php'); // Rediriger vers la page principale
         exit();
     } else {
-        // Authentification échouée, afficher un message d'erreur
-        echo 'Nom d\'utilisateur ou mot de passe incorrect.';
+        $_SESSION['login_error'] = 'Nom d\'utilisateur ou mot de passe incorrect.';
+        header('Location: ../front/login_form.php'); 
+        exit();
     }
 } catch (PDOException $e) {
     echo 'Erreur de connexion à la base de données : ' . $e->getMessage();

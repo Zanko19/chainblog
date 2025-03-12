@@ -1,27 +1,23 @@
 <?php
 session_start();
 
-// Vérifier si l'utilisateur est connecté (vous pouvez ajuster cela en fonction de votre système d'authentification)
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(['status' => 'error', 'message' => 'Vous devez être connecté pour envoyer un message.']);
     exit;
 }
 
-// Récupérer les données du formulaire
-$receiverUsername = $_POST['receiver']; // Nom d'utilisateur du destinataire
-$messageBody = $_POST['message']; // Contenu du message
-$senderUserID = $_SESSION['username']; // ID de l'expéditeur (utilisateur connecté)
+$receiverUsername = $_POST['receiver']; 
+$messageBody = $_POST['message']; 
+$senderUserID = $_SESSION['user_id']; 
+$senderUsername = $_SESSION['username']; 
 
-// Valider les données (vous pouvez ajouter des validations supplémentaires selon vos besoins)
 if (empty($receiverUsername) || empty($messageBody)) {
     echo json_encode(['status' => 'error', 'message' => 'Veuillez remplir tous les champs.']);
     exit;
 }
 
-// Établir la connexion à la base de données (ajustez les paramètres de connexion)
 include 'db_connect.php';
 
-// Rechercher l'ID du destinataire en fonction de son nom d'utilisateur
 $stmt = $pdo->prepare("SELECT ID FROM users WHERE username = ?");
 $stmt->execute([$receiverUsername]);
 
@@ -34,15 +30,24 @@ if (!$receiverRow) {
 
 $receiverUserID = $receiverRow['ID'];
 
-// Insérer le message dans la table des messages
 try {
+    $pdo->beginTransaction();
+
     $stmt = $pdo->prepare("INSERT INTO messages (sender_username, receiver_username, message_text, sent_at) VALUES (?, ?, ?, NOW())");
-    $stmt->execute([$senderUserID, $receiverUsername, $messageBody]); // Modifier cette ligne
+    $stmt->execute([$senderUsername, $receiverUsername, $messageBody]);
+
+    $actionType = 'new_message';
+    $sqlNotification = "INSERT INTO notifications (user_id, action_type, action_username, created_at) VALUES (?, ?, ?, NOW())";
+    $stmtNotification = $pdo->prepare($sqlNotification);
+    $stmtNotification->execute([$receiverUserID, $actionType, $senderUsername]);
+
+    $pdo->commit();
+
     echo json_encode(['status' => 'success', 'message' => 'Message envoyé avec succès.']);
 } catch (PDOException $e) {
+    $pdo->rollBack();
     echo json_encode(['status' => 'error', 'message' => 'Erreur lors de l\'envoi du message : ' . $e->getMessage()]);
 }
 
-// Fermer la connexion à la base de données
 $pdo = null;
 ?>
